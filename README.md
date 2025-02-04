@@ -228,3 +228,416 @@ Hello, World!
 Now that you've mastered the basics, we will move to **essential Linux commands**! Stay tuned! 🔥  
 
 ---
+
+# **📜 Shell Basics & Essential Commands**  
+
+## **📂 Navigating the Filesystem**  
+
+### 🔹 `pwd` (Print Working Directory)  
+Shows the full path of the **current directory** you are in.  
+
+```bash
+pwd
+```
+🔹 Example output:  
+```
+/home/sri
+```
+Use case: Knowing where you are before running commands.  
+
+---
+
+### 🔹 `ls` (List Directory Contents)  
+Lists files and directories in the current location.  
+
+```bash
+ls
+```
+
+**Common flags:**  
+- `-l` → Long listing format (shows permissions, owner, size, etc.)  
+- `-a` → Shows hidden files (`.` files)  
+- `-h` → Human-readable sizes (KB, MB, GB)  
+- `-R` → Lists subdirectories recursively  
+
+```bash
+ls -lahR
+```
+
+---
+
+### 🔹 `cd` (Change Directory)  
+Moves between directories.  
+
+```bash
+cd /home/sri/Documents
+```
+
+Shortcuts:  
+- `cd ..` → Move **one level up**  
+- `cd ~` → Go to **home directory**  
+- `cd -` → Go to **previous directory**  
+
+---
+
+## **📁 File & Directory Management**  
+
+### 🔹 `touch` (Create a File)  
+Creates a new empty file.  
+
+```bash
+touch myfile.txt
+```
+
+You can create **multiple files** at once:  
+
+```bash
+touch file1.txt file2.txt file3.txt
+```
+
+---
+
+### 🔹 `mkdir` (Make Directory)  
+Creates a new directory.  
+
+```bash
+mkdir myfolder
+```
+
+Create **multiple directories**:  
+
+```bash
+mkdir dir1 dir2 dir3
+```
+
+Create a **nested directory structure**:  
+
+```bash
+mkdir -p parent/child/grandchild
+```
+`-p` ensures parent directories exist.
+
+---
+
+### 🔹 `rm` (Remove File/Directory)  
+Deletes files or directories.  
+
+```bash
+rm myfile.txt
+```
+
+**Flags:**  
+- `-r` → Delete **directories** recursively  
+- `-f` → Force deletion (no confirmation)  
+
+```bash
+rm -rf myfolder
+```
+⚠️ **Be careful** when using `rm -rf`, as it **permanently deletes** files.
+
+---
+
+### 🔹 `cp` (Copy Files & Directories)  
+Copies files or directories.  
+
+```bash
+cp file1.txt file2.txt
+```
+
+Copy a **directory**:  
+
+```bash
+cp -r folder1 folder2
+```
+`-r` is needed for directories.
+
+---
+
+### 🔹 `mv` (Move/Rename Files)  
+Moves or renames a file.  
+
+```bash
+mv oldname.txt newname.txt
+```
+
+Move a file into a different directory:  
+
+```bash
+mv file.txt /home/sri/Documents/
+```
+
+---
+
+### 🔹 `find` (Search for Files)  
+Finds files based on name, size, etc.  
+
+```bash
+find /home -name "file.txt"
+```
+
+Find files by size:  
+
+```bash
+find / -size +100M
+```
+
+---
+
+## **📄 Viewing & Editing Files**  
+
+### 🔹 `cat` (View File Contents)  
+Displays the contents of a file.  
+
+```bash
+cat file.txt
+```
+
+---
+
+### 🔹 `tac` (Reverse `cat`)  
+Displays a file **backwards**.  
+
+```bash
+tac file.txt
+```
+
+---
+
+### 🔹 `less` / `more` (Scroll Through Files)  
+Allows **scrolling** through large files.  
+
+```bash
+less file.txt
+```
+Press `q` to exit.  
+
+---
+
+### 🔹 `head` / `tail` (First/Last Lines)  
+Show first 10 lines:  
+
+```bash
+head file.txt
+```
+
+Show last 10 lines:  
+
+```bash
+tail file.txt
+```
+
+Show last 50 lines:  
+
+```bash
+tail -n 50 file.txt
+```
+
+---
+
+### 🔹 `nano` / `vim` (Edit Files)  
+
+Open file in **Nano** (easier for beginners):  
+
+```bash
+nano file.txt
+```
+
+Open file in **Vim**:  
+
+```bash
+vim file.txt
+```
+
+---
+
+### 🔹 `sed` (Stream Editor - Modify Text)  
+Replace all occurrences of "foo" with "bar" in a file:  
+
+```bash
+sed 's/foo/bar/g' file.txt
+```
+
+---
+
+### 🔹 `awk` (Pattern Scanning & Processing)  
+Print **column 1** from a file:  
+
+```bash
+awk '{print $1}' file.txt
+```
+
+---
+
+## **🖥️ Disk & Storage Commands**  
+
+### 🔹 `df` (Disk Free)  
+Shows disk usage.  
+
+```bash
+df -h
+```
+
+---
+
+### 🔹 `du` (Disk Usage)  
+Shows size of a file or directory.  
+
+```bash
+du -sh folder
+```
+
+---
+
+### 🔹 `lsblk` (List Block Devices)  
+Shows mounted disks.  
+
+```bash
+lsblk
+```
+
+---
+
+### 🔹 `mount` / `umount` (Attach/Detach Disks)  
+Mount a USB drive:  
+
+```bash
+mount /dev/sdb1 /mnt
+```
+
+Unmount:  
+
+```bash
+umount /mnt
+```
+
+---
+
+## **👤 User Management**  
+
+### 🔹 `whoami`  
+Displays the current user.  
+
+```bash
+whoami
+```
+
+### 🔹 `who`  
+Shows all logged-in users.  
+
+```bash
+who
+```
+
+### 🔹 `id`  
+Shows user **UID**, **GID**, and **groups**.  
+
+```bash
+id
+```
+
+### 🔹 `adduser` / `deluser`  
+Create a new user:  
+
+```bash
+sudo adduser username
+```
+
+Delete a user:  
+
+```bash
+sudo deluser username
+```
+
+---
+
+## **🔐 Permissions & Ownership**  
+
+### 🔹 `chmod` (Change Permissions)  
+
+```bash
+chmod 755 file.sh
+```
+
+### 🔹 `chown` (Change Owner)  
+
+```bash
+chown user:group file.txt
+```
+
+---
+
+## **⚙️ Process Management**  
+
+### 🔹 `ps` (Show Running Processes)  
+```bash
+ps aux
+```
+
+### 🔹 `top` / `htop` (Monitor Processes)  
+```bash
+top
+```
+
+For a better UI:  
+```bash
+htop
+```
+
+### 🔹 `kill` / `pkill` (Terminate Process)  
+Kill a process by PID:  
+
+```bash
+kill 1234
+```
+
+Kill a process by name:  
+
+```bash
+pkill firefox
+```
+
+---
+
+## **🌐 Networking Basics**  
+
+### 🔹 `ping` (Test Connectivity)  
+```bash
+ping google.com
+```
+
+### 🔹 `netstat` / `ss` (Network Status)  
+```bash
+netstat -tulnp
+```
+```bash
+ss -tulnp
+```
+
+### 🔹 `nslookup` (DNS Lookup)  
+```bash
+nslookup google.com
+```
+
+### 🔹 `curl` / `wget` (Download Files)  
+```bash
+curl -O http://example.com/file.zip
+```
+
+```bash
+wget http://example.com/file.zip
+```
+
+---
+
+## **🎯 Summary**  
+✅ Navigated the filesystem with `cd`, `ls`, `pwd`.  
+✅ Managed files with `touch`, `mkdir`, `rm`, `cp`, `mv`, `find`.  
+✅ Viewed and edited files using `cat`, `less`, `vim`, `sed`, `awk`.  
+✅ Monitored system resources with `df`, `du`, `top`, `htop`.  
+✅ Managed users and permissions with `adduser`, `chmod`, `chown`.  
+✅ Monitored processes with `ps`, `kill`, `pkill`.  
+✅ Used networking commands like `ping`, `curl`, `wget`.  
+
+---
+
+This should cover everything you need! Let me know if you want any modifications. 🚀
