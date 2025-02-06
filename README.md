@@ -1,6 +1,6 @@
 # LINUX SHELL SCRIPTING BASIC TO ADVANCE
 
-### [Syllabus](./syllabus.md)
+### [Syllabus](./syllabus.md)  
 
 ---
 
